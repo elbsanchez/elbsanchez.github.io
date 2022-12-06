@@ -1,0 +1,120 @@
+.container {
+    max-width: 1100px;
+    width: calc(100% - 164px);
+    margin: auto;
+}
+
+.levels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.block {
+    display: inline-block;
+    padding: 10px;
+}
+
+.node {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: lightgray;
+}
+
+.trace {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: lightgreen;
+    transition: left 0.5s, top 0.5s;
+    opacity: 0.45;
+}
+
+.area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+}
+
+.line {
+    stroke: lightgrey;
+    stroke-width: 1.5;
+    stroke-dasharray: 2.5px;
+}
+
+.testCase {
+    width: 100%;
+}
+
+.parameters {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: center;
+    align-items: flex-end;
+    width: 35%;
+}
+
+.figure {
+    width: 60%;
+    margin: auto;
+}
+
+.graphContainer {
+    display: flex;
+    width: 100%;
+}
+
+.args {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 120px;
+    height: 90px;
+
+    border-radius: 30px;
+    padding: 5px;
+    margin: 10px;
+}
+.target{
+    background-color: lightblue;
+}
+.input{
+   background-color: lightcoral;
+}
+.solution{
+    background-color: lightgreen;
+}
+
+.text {
+    overflow-wrap: break-word;
+    inline-size: 100px;
+    text-align: center;
+}
+
+.textBox {
+    display: flex;
+}
+
+textarea {
+    min-width: 100%;
+    height: 120px;
+    resize: none;
+}
+
+.submitBtn {
+    float: right; 
+    padding:10px; 
+    margin: 5px auto;
+    border-radius: 5px;
+}

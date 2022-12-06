@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="content">
+      <div>
+          <h1>Pyramid Descent Puzzle</h1>
+          <p><strong>Description: </strong>A Pyramid Descent Puzzle consists of a pyramid of positive integers. To
+              solve the puzzle, you must find a path that traverses the pyramid from top to bottom visiting numbers
+              whose product is a given target value. Each step in the path must go down one row, and go either one
+              step to the left or one step to the right.
+              For example, suppose the pyramid below has a target value of 2.
+          </p>
+          <div>
+              <table style="margin:0 auto;">
+                  <tbody>
+                      <tr>
+                          <td></td>
+                          <td></td>
+                          <td>1</td>
+                          <td></td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <td></td>
+                          <td>2</td>
+                          <td></td>
+                          <td>3</td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <td>4</td>
+                          <td></td>
+                          <td>1</td>
+                          <td></td>
+                          <td>1</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <p>
+              A solver for this puzzle should output <strong>LR</strong>, indicating that
+              the correct path starts from the 1 on top, goes <strong>L</strong>eft to the 2 on the
+              second row, then goes <strong>R</strong>ight to the 1 in the center of the bottom row.
+              (Note in particular that the successful path cannot go through the 1 at the end of the
+              bottom row.) This gives the path shown in red below:
+          </p>
+          <div>
+              <table style="margin:0 auto;">
+                  <tbody>
+                      <tr>
+                          <td></td>
+                          <td></td>
+                          <td><strong><span style="color:#bb0000">1</span></strong></td>
+                          <td></td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <td></td>
+                          <td><strong><span style="color:#bb0000">2</span></strong></td>
+                          <td></td>
+                          <td>3</td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <td>4</td>
+                          <td></td>
+                          <td><strong><span style="color:#bb0000">1</span></strong></td>
+                          <td></td>
+                          <td>1</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <div style="float: right; font-style: italic;">Credit: Puzzle by AoPS Incorporated</div>
+      </div>
+      <div class="testCase">
+          <form [formGroup]="problemInput" (ngSubmit)="onSubmit()">
+              <h3>Test Case</h3>
+              <p><strong>Input: </strong> The first line contains target integer.
+                  The next lines contains numbers separated by commas for each row in the pyramid from top to bottom.
+              </p>
+
+              <div class="textBox">
+                  <textarea id="input" type="text" rows="10" formControlName="input" placeholder="2
+1
+2,3
+4,1,1"></textarea>
+              </div>
+              <div><button type="submit" class="submitBtn">Submit</button></div>
+          </form>
+      </div>
+      <div *ngIf="graph" class="graphContainer">
+          <div class="parameters">
+              <div class="args target"><span class="text">Target: {{target}}</span></div>
+              <div class="args input"><span class="text">Input: {{inputText}}</span></div>
+              <div class="args solution"><span class="text">Output: {{outputText}}</span></div>
+          </div>
+          <div class="figure">
+              <div *ngFor="let row of inputNumbers; index as i" class="levels">
+                  <div *ngFor="let col of row; index as j" class="block">
+                      <div #node class="node" id="{{'node-' + i + j}}">{{inputNumbers[i][j]}}</div>
+                  </div>
+              </div>
+              <div *ngIf="x && y">
+                  <div id="tracer" class="trace" [style.left]="x + 'px'" [style.top]="y + 'px'"></div>
+              </div>
+
+              <div *ngFor="let connection of connections">
+                  <svg class="area" style="overflow: visible;">
+                      <line class="line" [style.stroke]="goodPathFound && 'red'" [attr.x1]="connection[0]"
+                          [attr.y1]="connection[1]" [attr.x2]="connection[2]" [attr.y2]="connection[3]"></line>
+                  </svg>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
